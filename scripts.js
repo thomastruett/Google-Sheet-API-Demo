@@ -8,6 +8,7 @@ window.initMap = function() {
         zoom: 10,
         center: {lat: -34.397, lng: 150.644}
     });
+    bounds = new google.maps.LatLngBounds();
     fetchAddresses();
 }
 
@@ -42,10 +43,16 @@ function geocodeAddresses(addresses) {
 }
 
 function addMarker(location) {
-    new google.maps.Marker({
-        map: map,
-        position: location
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map
     });
+
+    // Extend the bounds to include the new marker's position
+    bounds.extend(marker.position);
+
+    // Fit the map to the new bounds. This will zoom in/out and pan the map as necessary.
+    map.fitBounds(bounds);
 }
 
 function loadScript(url, callback) {
