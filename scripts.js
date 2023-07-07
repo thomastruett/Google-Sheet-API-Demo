@@ -41,15 +41,11 @@ function geocodeAddresses(addresses) {
 }
 
 function addMarker(location) {
-    const icon = {
-        url: "https://emoji.slack-edge.com/T0366B7G5/frank/dfe948694de8093c.png",
-        scaledSize: new google.maps.Size(30 * aspectRatio, 30),
-    };
 
     const marker = new google.maps.Marker({
         position: location,
         map: map,
-        icon: icon
+        icon: 'https://i.ibb.co/ChQL9FQ/frank.png'
     });
 
     // Extend the bounds to include the new marker's position
