@@ -13,7 +13,7 @@ window.initMap = function() {
 }
 
 function fetchAddresses() {
-    let googleSheetsUrl = `https://sheets.googleapis.com/v4/spreadsheets/1Sp69YxPV2-_NmjjjwaiFCvl59_KeXgLxxHxVingMSK0/values/Sheet1!A1:A50?key=AIzaSyCuE37rnuC_y9OlVzhXN3nhjgaPYDK4hcU`;
+    let googleSheetsUrl = `https://sheets.googleapis.com/v4/spreadsheets/1Sp69YxPV2-_NmjjjwaiFCvl59_KeXgLxxHxVingMSK0/values/Sheet1!A1:A?key=AIzaSyCuE37rnuC_y9OlVzhXN3nhjgaPYDK4hcU`;
 
     fetch(googleSheetsUrl)
         .then(response => response.json())
