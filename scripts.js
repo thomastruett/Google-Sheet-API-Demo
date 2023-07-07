@@ -2,12 +2,13 @@ let map;
 let geocoder;
 let storedAddresses = sessionStorage.getItem('addresses') ? JSON.parse(sessionStorage.getItem('addresses')) : {};
 
-function initMap() {
+window.initMap = function() {
     geocoder = new google.maps.Geocoder();
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: {lat: -34.397, lng: 150.644}
     });
+    fetchAddresses();
 }
 
 function fetchAddresses() {
@@ -47,8 +48,24 @@ function addMarker(location) {
     });
 }
 
-// Initialize map once
-initMap();
+function loadScript(url, callback) {
+    let script = document.createElement("script");
+    script.type = "text/javascript";
+    script.onload = function() {
+        callback();
+    };
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCuE37rnuC_y9OlVzhXN3nhjgaPYDK4hcU", function() {
+    let checkExist = setInterval(function() {
+        if (window.google) {
+            clearInterval(checkExist);
+            initMap();
+        }
+    }, 100);
+});
 
 // Fetch addresses and add markers every 60 seconds
 setInterval(fetchAddresses, (1000 * 60));
