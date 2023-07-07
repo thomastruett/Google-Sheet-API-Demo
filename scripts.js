@@ -50,5 +50,5 @@ function addMarker(location) {
 // Initialize map once
 initMap();
 
-// Fetch addresses and add markers every 5 seconds
-setInterval(fetchAddresses, 5000);
+// Fetch addresses and add markers every 60 seconds
+setInterval(fetchAddresses, (1000 * 60));
