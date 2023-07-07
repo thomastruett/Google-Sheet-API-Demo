@@ -45,7 +45,8 @@ function geocodeAddresses(addresses) {
 function addMarker(location) {
     const marker = new google.maps.Marker({
         position: location,
-        map: map
+        map: map,
+        icon: "https://emoji.slack-edge.com/T0366B7G5/frank/dfe948694de8093c.png"
     });
 
     // Extend the bounds to include the new marker's position
