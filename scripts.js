@@ -1,10 +1,8 @@
-let map;
-let geocoder;
-let storedAddresses = sessionStorage.getItem('addresses') ? JSON.parse(sessionStorage.getItem('addresses')) : {};
+window.storedAddresses = sessionStorage.getItem('addresses') ? JSON.parse(sessionStorage.getItem('addresses')) : {};
 
 window.initMap = function() {
-    geocoder = new google.maps.Geocoder();
-    map = new google.maps.Map(document.getElementById('map'), {
+    window.geocoder = new google.maps.Geocoder();
+    window.map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: {lat: -34.397, lng: 150.644}
     });
